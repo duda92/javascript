@@ -1,0 +1,8 @@
+D:\Temp\DinnersAccounting\Domain\bin\Debug\DataModel.dll.config
+D:\Temp\DinnersAccounting\Domain\bin\Debug\DataModel.dll
+D:\Temp\DinnersAccounting\Domain\bin\Debug\DataModel.pdb
+D:\Temp\DinnersAccounting\Domain\bin\Debug\EntityFramework.dll
+D:\Temp\DinnersAccounting\Domain\bin\Debug\EntityFramework.xml
+D:\Temp\DinnersAccounting\Domain\obj\Debug\ResolveAssemblyReference.cache
+D:\Temp\DinnersAccounting\Domain\obj\Debug\DataModel.dll
+D:\Temp\DinnersAccounting\Domain\obj\Debug\DataModel.pdb

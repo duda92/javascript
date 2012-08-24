@@ -1,0 +1,69 @@
+﻿<script src="../../Scripts/OrdersAccounting/utils.js" type="text/javascript"></script>
+<script src="../../Scripts/OrdersAccounting/apply_ui.js" type="text/javascript"></script>
+<link href="../../Scripts/jquery-ui-1.8.22.custom.css" rel="stylesheet" type="text/css" />
+<script src="../../Scripts/jquery-ui-1.8.19.custom.min.js" type="text/javascript"></script>
+<script src="../../Scripts/OrdersAccounting/date.js" type="text/javascript"></script>
+<script src="../../Scripts/OrdersAccounting/variables.js" type="text/javascript"></script>
+<script src="../../Scripts/OrdersAccounting/orders.js" type="text/javascript"></script>
+<script src="../../Scripts/OrdersAccounting/order_list_ui.js" type="text/javascript"></script>
+<script src="../../Scripts/OrdersAccounting/proposition.js" type="text/javascript"></script>
+<script src="../../Scripts/PropositionsScripts/products_sort.js" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/niceforms.js")" type="text/javascript"></script>
+<link href= "@Url.Content("~/Scripts/niceforms-default.css")" rel="stylesheet" type="text/css" />
+<style>
+
+</style>
+<script type="text/javascript">
+    function PageScript() {
+        accordion_div = $('#accordion_menues');
+        orders_list_div = $('#orders_list');
+        proposition_content_div = $('#proposition');
+        proposition_div = $('#proposition_main');
+        apply_ui();
+        build_days_accordion();
+    }
+</script>
+<div id="dates">
+    <p>
+        Начальная дата:</p>
+    <input id="start_date_input" type="text" />
+    <p>
+        Конечная дата:</p>
+    <input id="end_date_input" type="text" />
+    @*<dl>
+        <dt>Начальная дата:</dt>
+        <dd style="width: auto;">
+            <input id="start_date_input" type="text" />
+        </dd>
+    </dl>
+    <dl>
+        <dt>Конечная дата:</dt>
+        <dd style="width: auto;">
+            <input id="end_date_input" type="text" />
+        </dd>
+    </dl>*@
+    <div>
+        <label id="date_range_select_validation" style="color: Red; display: none;">
+            Начальная дата должна быть меньше конечной</label>
+    </div>
+</div>
+<table style="width: 100%;">
+    <tr>
+        <td style="width: 30%;">
+            <div id="accordion_menues">
+            </div>
+        </td>
+        <td style="width: 40%;">
+            <div id="proposition" class="ui-widget">
+                <div class="ui-widget-header">
+                </div>
+                <div id="proposition_main" class="ui-widget-content">
+                </div>
+            </div>
+        </td>
+        <td style="width: 30%;">
+            <div id="orders_list">
+            </div>
+        </td>
+    </tr>
+</table>

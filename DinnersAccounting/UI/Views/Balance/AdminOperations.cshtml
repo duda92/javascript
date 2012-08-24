@@ -1,0 +1,93 @@
+﻿@model IEnumerable<DA.Dinners.Domain.Person>
+<script src="@Url.Content("~/Scripts/niceforms.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/AdminOperationsBalance/aply_ui.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/AdminOperationsBalance/history.js")" type="text/javascript"></script>
+<script src="../../Scripts/Order/Order.js" type="text/javascript"></script>
+<link href= "@Url.Content("~/Scripts/niceforms-default.css")" rel="stylesheet" type="text/css" />
+<link  href="@Url.Content("~/Scripts/User_propositions/proposition_for_user.css")" rel="stylesheet" type="text/css" />
+<link href= "@Url.Content("~/Scripts/jquery-ui-1.8.22.custom.css")" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+    function PageScript() {
+        aply_ui();
+    }
+</script>
+<div style="margin-top: 25px;">
+    <div id="people_list_div">
+        <ol id="people_list_ol">
+            @foreach (var person in Model.OrderBy(p => p.GetName()))
+            {
+                <li class="ui-widget-content" id="@person.Id" balance="@person.Balance">@person.GetName()</li>
+            }
+        </ol>
+    </div>
+    <div id="operations_div">
+        <fieldset>
+            <legend id="name_of_selected" class="niceform"></legend>
+            <dl>
+                <dt>
+                    <label>
+                        Текущий баланс:
+                    </label>
+                </dt>
+                <dt>
+                    <label id="balance_of_selected">
+                    </label>
+                    <label>
+                        грн.</label>
+                </dt>
+            </dl>
+            <dl>
+                <dt>
+                    <label>
+                        Сумма
+                    </label>
+                </dt>
+                <dd>
+                    <input type="text" name="Title" id="amount" class="edit_create_product_input" />
+                    <label id="enter_sum_validation_title" style="color: Red; display: none;">
+                        Введите корректную сумму операции
+                    </label>
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    <label>
+                        Комментарий
+                    </label>
+                </dt>
+                <dd>
+                    <textarea rows="10" cols="45" type="text" name="Summary" id="summary" class="edit_create_product_input"></textarea>
+                </dd>
+            </dl>
+            <div>
+                <input type="text" name="Id" style="display: none" id="person_id" />
+            </div>
+            <div align="center" class="container">
+                <div style="vertical-align: middle; display: table-cell">
+                    <div style="vertical-align: middle; display: inline-block">
+                        <input type="button" value="Отменить" id="cancel_operation_button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+                            role="button" onclick="cancel_operation();" />
+                        <input type="button" value="Сохранить" id="create_operation_button" onclick="create_operation();"
+                            class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+                            role="button" />
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div id="history">
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+<div id="order">
+    <input type="hidden" id="order_date" />
+    <input type="hidden" id="order_id" />
+    <ul id="order_list">
+    </ul>
+    <div id="order_status_block">
+        Статус:
+        <label id="order_status">
+        </label>
+    </div>
+</div>

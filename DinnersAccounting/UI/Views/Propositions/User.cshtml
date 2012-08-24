@@ -1,0 +1,104 @@
+﻿<script src="@Url.Content("~/Scripts/User_propositions/add_to_order.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/User_propositions/propositions.update.user.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/PropositionsScripts/products_sort.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/User_propositions/apply_ui.js")" type="text/javascript"></script>
+<link href= "@Url.Content("~/Scripts/jquery-ui-1.8.22.custom.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/jquery.treeview.js")" type="text/javascript"></script>
+<link href= "@Url.Content("~/Scripts/jquery.treeview.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/User_propositions/order.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/User_propositions/variables.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/User_propositions/order_drawing.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/User_propositions/popups.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/User_propositions/apply_ui.js")" type="text/javascript"></script>
+<link  href="@Url.Content("~/Scripts/User_propositions/proposition_for_user.css")" rel="stylesheet" type="text/css" />
+<script src="http://localhost:1401/Scripts/Utils/micro-templating.js" type="text/javascript"></script>
+<script src="http://localhost:1401/Scripts/Utils/tempo.js" type="text/javascript"></script>
+
+
+<script language="javascript" type="text/javascript">
+    function PageScript() {
+
+        apply_ui();
+
+        UpdateDatesListAndDisplayingProposition();
+
+        $('#date_select').change(function () {
+            var id = $('#date_select').val();
+            UpdateContinuousProposition(id);
+        });
+
+    }
+</script>
+<div id="select_proposition_div">
+    <h2>
+        Предложения :
+        <select id="date_select" style="margin-bottom: 30px">
+        </select>
+    </h2>
+</div>
+<div id="main">
+    <div id="continuous_proposition_parent" class="inline-block">
+    </div>
+    
+    
+    <div id="order" class="inline-block order ui-corner-all" style="position: relative">
+        <h3 class="ui-widget-header ui-corner-all order_header" id="order_title">
+        </h3>
+        <input type="hidden" id="order_date" />
+        <input type="hidden" id="order_id" />
+        <ul id="order_list">
+        </ul>
+        <div>
+            <div id="order_status_block">
+                Статус:
+                <label id="order_status">
+                    Создание</label>
+            </div>
+            <div id="commit_order">
+                <a href="#" class="link_button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+                    onclick="commit_order();">Подтвердить</a>
+            </div>
+            <div id="cancel_order_changes">
+                <a href="#" class="link_button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+                    onclick="cancel_order_changes();">Отмена</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/html" id="order_template" class="inline-block order ui-corner-all" style="position: relative">
+        <h3 class="ui-widget-header ui-corner-all order_header" id="order_title"></h3>
+        <input type="hidden" id="order_date" value="<%=Date%>"/>
+        <input type="hidden" id="order_id"   value="<%=Id%>"/>
+
+        <ul id="order_list">    
+            <% for ( var i = 0; i < OrderDetail.length; i++ ) { %>
+                <li id="li_of_<%=OrderDetail[i].Product.Id%>" style="margin: 1em; " order_detail_id="<%=OrderDetail[i].Id%>" value="<%=OrderDetail[i].Quantity%>">
+                    <div class= "product_title_in_order_div"   ><%=OrderDetail[i].Product.Title%></div>
+                    <div class= "product_quantity_in_order_div"><%=OrderDetail[i].Quantity%></div>
+                    <div class= "product_price_in_order_div"   ><b><%=OrderDetail[i].Product.Price%></b></div>
+                    <div class= "delete_link_in_order_div"     >
+                        <a title="Delete" href="#" onclick="remove_product_from_order_dom(<%=OrderDetail[i].Product%>)">
+                            <img src="../Scripts/images/delete.png" style="width:20px;">
+                        </a>
+                    </div>
+                </li>
+            <% } %>
+        </ul>
+        <div>
+            <div id="order_status_block">
+                Статус:
+                <label id="order_status">Создание</label>
+            </div>
+            <div id="commit_order">
+                <a href="#" class="link_button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+                    onclick="commit_order();">Подтвердить</a>
+            </div>
+            <div id="cancel_order_changes">
+                <a href="#" class="link_button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+                    onclick="cancel_order_changes();">Отмена</a>
+            </div>
+        </div>
+
+</script>

@@ -1,0 +1,82 @@
+﻿@model DA.Dinners.Domain.Person
+@using DA.Dinners.Domain;
+<link href="../../Scripts/jquery-ui-1.8.22.custom.css" rel="stylesheet" type="text/css" />
+<script src="../../Scripts/jquery-ui-1.8.19.custom.min.js" type="text/javascript"></script>
+<script src="../../Scripts/Order/Order.js" type="text/javascript"></script>
+<link  href="@Url.Content("~/Scripts/User_propositions/proposition_for_user.css")" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+    function navigate_to_order(orderId) {
+        get_order(orderId);
+    }
+
+    function PageScript() {
+        $('#order').dialog({ autoOpen: false, width: 700, height: 500 });
+
+    }
+</script>
+<table id="tblbalacne">
+    <tr>
+        <td id="tdbal">
+            <div id="balance">
+                <p id="balancetxt">
+                    Ваш Баланс: @Model.Balance грн.</p>
+            </div>
+        </td>
+        <td id="tdhistory">
+            <div id="history_container" class="ui-widget">
+                <table id="history" class="ui-widget">
+                    <caption>
+                        <b>Операций снятия/пополнения баланса</b></caption>
+            <th>
+                Дата
+            </th>
+        <th>
+            Сумма
+        </th>
+        <th>
+            Комментарий
+        </th>
+        @{
+            foreach (var operation in Model.Operations)
+            {
+            <tr>
+                <td>
+                    <label>@operation.Date.ToShortDateString()</label>
+                </td>
+                <td>
+                    @if (operation is CreditOperation)
+                    {
+                        @:-
+                                                                                                                                                                                                }
+                    @operation.Amount
+                </td>
+                <td>
+                    <label>@operation.Summary</label>
+                </td>
+                @if (operation is CreditOperation)
+                {
+                    int id = (operation as CreditOperation).Order.Id;
+                    <td>
+                        <label>
+                            <a href="#" onclick="navigate_to_order(@id);">Показать заказ</a></label>
+                    </td>
+                }
+            </tr>
+            }
+        }
+</table>
+</div> </td>
+<td id="tdorder">
+    <div id="order">
+        <input type="hidden" id="order_date" />
+        <input type="hidden" id="order_id" />
+        <ul id="order_list">
+        </ul>
+        <div id="order_status_block">
+            Статус:
+            <label id="order_status">
+            </label>
+        </div>
+    </div>
+</td>
+</tr> </table>

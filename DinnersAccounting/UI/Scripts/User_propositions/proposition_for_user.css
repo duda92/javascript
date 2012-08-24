@@ -1,0 +1,97 @@
+﻿#select_proposition_div
+{
+    position: relative;
+}
+
+#main
+{
+    left: 30%;
+}
+
+body
+{
+    overflow: scroll;
+}
+
+.inline-block
+{
+    display: inline-block;
+    vertical-align: top;
+    min-width: 200px;
+}
+
+#continuous_proposition_parent
+{
+    width: 50em;
+}
+
+.order
+{
+    visibility: hidden;
+    position: relative;
+    left: 50px;
+    min-width: 30%;
+    min-height: 100px;
+    background: #e0e0e0;
+}
+
+.order_header
+{
+    height: 30px;
+    text-align: center;
+    line-height: 1.75;
+    margin-top: 0px;
+}
+
+#order_status_block, #cancel_order_changes, #commit_order
+{
+    display: inline-block;
+    margin: 15px;
+}
+
+#cancel_order_changes, #commit_order
+{
+    float: right;
+}
+
+.product_title_in_order_div
+{
+    display: inline-block;
+    width: 50%;
+}
+.product_quantity_in_order_div
+{
+    display: inline-block;
+    width: 10%;
+    text-align: center;
+}
+.product_price_in_order_div
+{
+    display: inline-block;
+    width: 10%;
+    text-align: center;
+}
+.delete_link_in_order_div
+{
+    display: inline-block;
+    width: 15%;
+    text-align: center;
+}
+
+#date_select
+{
+    height: 20px;
+    width: 180px;
+}
+
+.link_button
+{
+    line-height: 1.5em;
+    width: 100px;
+    height: 30px;
+}
+
+#order
+{
+    overflow: auto;
+}
